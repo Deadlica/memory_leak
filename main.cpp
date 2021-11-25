@@ -7,7 +7,7 @@ bool validateInput(std::string input);
 
 int main() {
 	uint64_t totalAllocatedMemory = 0;
-	int counter = 0, GiB = pow(2, 30) / 8, KiB = pow(2, 10) / 8;
+	int counter = 0, GiB = pow(2, 30) / sizeof(int64_t), KiB = pow(2, 10) / sizeof(int64_t);
 	std::string userInput;
 	bool input_is_bad = true;
 	while (true) {
@@ -30,7 +30,7 @@ int main() {
 				try
 				{
 					new int64_t[GiB];
-					totalAllocatedMemory += GiB * 8;
+					totalAllocatedMemory += GiB * sizeof(int64_t);
 					std::cout << "Total allocated memory: " << totalAllocatedMemory << " bytes" << std::endl;
 					//system("timeout /t 2 /nobreak");
 				}
@@ -47,7 +47,7 @@ int main() {
 				try
 				{
 					new int64_t[KiB];
-					totalAllocatedMemory += KiB * 8;
+					totalAllocatedMemory += KiB * sizeof(int64_t);
 					counter++;
 					if (counter == 1024) {
 						std::cout << "Total allocated memory: " << totalAllocatedMemory << " bytes" << std::endl;
